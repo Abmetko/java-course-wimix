@@ -30,9 +30,10 @@ public class GenericDeserializer {
         return obj;
     }
 
-    /*
-     * Human.class - возвращает объект с типом Class<Human>.
-     * Используется, когда нет доступного объекта класса.
+    /**
+     * Human.class - возвращает объект Class с типом Human.
+     *
+     * @see <a href="https://docs.oracle.com/javase/tutorial/reflect/class/classNew.html">https://docs.oracle.com/javase/tutorial/reflect/class/classNew.html</a>
      */
     @SneakyThrows
     public static void main(String[] args) {

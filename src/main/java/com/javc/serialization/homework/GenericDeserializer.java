@@ -30,10 +30,13 @@ public class GenericDeserializer {
         return obj;
     }
 
+    /*
+     * Human.class - возвращает объект с типом Class<Human>.
+     * Используется, когда нет доступного объекта класса.
+     */
     @SneakyThrows
     public static void main(String[] args) {
         writeObject(new File(FILE_PATH), new Human("John", "Minsk", 15));
-        //Human.class - возвращает объект класса Class<Human>
         System.out.println(getObject(new File(FILE_PATH), Human.class).address);
     }
 }

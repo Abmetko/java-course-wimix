@@ -38,6 +38,7 @@ public class GenericDeserializer {
     @SneakyThrows
     public static void main(String[] args) {
         writeObject(new File(FILE_PATH), new Human("John", "Minsk", 15));
+
         System.out.println(getObject(new File(FILE_PATH), Human.class).address);
     }
 }

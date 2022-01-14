@@ -5,6 +5,7 @@ import lombok.SneakyThrows;
 
 import java.io.*;
 
+@SuppressWarnings("all")
 public class GenericDeserializer {
 
     private static final String FILE_PATH = "src/main/java/com/javc/serialization/base/file.txt";
@@ -15,8 +16,14 @@ public class GenericDeserializer {
         objectOutputStream.close();
     }
 
-    @SuppressWarnings("all")
     public static <T> T getObject(File file, Class<T> cls) throws IOException, ClassNotFoundException {
+        ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));
+        Object obj = (T) objectInputStream.readObject();
+        objectInputStream.close();
+        return (T) obj;
+    }
+
+    public static <T> T getObjectV2(File file, Class<T> cls) throws IOException, ClassNotFoundException {
         ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));
         T obj = (T) objectInputStream.readObject();
         objectInputStream.close();

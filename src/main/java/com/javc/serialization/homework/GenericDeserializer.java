@@ -23,7 +23,7 @@ public class GenericDeserializer {
         return (T) obj;
     }
 
-    public static <T> T getObjectV2(File file, Class<T> cls) throws IOException, ClassNotFoundException {
+    public static <T> T getObject_2(File file, Class<T> cls) throws IOException, ClassNotFoundException {
         ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));
         T obj = (T) objectInputStream.readObject();
         objectInputStream.close();
@@ -33,7 +33,7 @@ public class GenericDeserializer {
     @SneakyThrows
     public static void main(String[] args) {
         writeObject(new File(FILE_PATH), new Human("John", "Minsk", 15));
-
+        //Human.class - возвращает объект класса Class<Human>
         System.out.println(getObject(new File(FILE_PATH), Human.class).address);
     }
 }

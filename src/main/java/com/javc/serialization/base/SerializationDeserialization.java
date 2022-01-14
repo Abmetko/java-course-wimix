@@ -9,13 +9,13 @@ import java.io.ObjectOutputStream;
 
 public class SerializationDeserialization {
 
-    private static final String FILE_PATH = "src/main/java/com/serialization/base/file.txt";
+    private static final String FILE_PATH = "src/main/java/com/javc/serialization/base/file.txt";
 
     @SneakyThrows
     public static void main(String[] args) {
         //сериализация объекта в файл
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILE_PATH));
-        objectOutputStream.writeObject(new Human("Tom", "CA", 80));
+        objectOutputStream.writeObject(new Human("Tom", "San Francisco", 80));
         objectOutputStream.close();
 
         //десериализация строковых данных из файла в объект типа Human

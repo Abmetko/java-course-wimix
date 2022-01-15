@@ -18,18 +18,20 @@ public class SerializationDeserializationWithObjectMapper {
         ObjectMapper mapper = new ObjectMapper();
         var path = "src/main/java/com/javc/serialization/user.json";
 
-//        //сериализация данных объекта в файл(json формат)
-//        mapper.writeValue(new File(path), new Human("John", "DC", 15));
+        //сериализация данных объекта в файл(json формат)
+        mapper.writeValue(new File(path), new Human("John", "DC", 15));
 
         //десериализация данных из файла в java объект
-//        Human human = mapper.readValue(new File(path), Human.class);
-//        System.out.println(human.age);//вывод на печать поля объекта --> 80
-//        human.print();
+        Human human = mapper.readValue(new File(path), Human.class);
+        System.out.println(human.age);//вывод на печать поля объекта --> 80
 
         //десериализация данных из строки в java объект
-        String jsonString = "[{\"name\":\"Tom\",\"address\":\"LA\",\"age\":90},{\"name\":\"John\",\"address\":\"LA\",\"age\":90}]";
+        String jsonString = "[{\"name\":\"Tom\",\"address\":\"LA\",\"age\":90}," +
+                "{\"name\":\"John\",\"address\":\"LA\",\"age\":90}]";
 
-        List<Human> human2 = mapper.readValue(jsonString, new TypeReference<List<Human>>() {});
+        List<Human> human2 = mapper.readValue(jsonString, new TypeReference<List<Human>>() {
+            //this is implementation of abstract class TypeReference
+        });
         System.out.println(human2.get(1).toString());//вывод на печать поля объекта --> 60
         System.out.println("My name is " + human2.get(1).getName());
     }

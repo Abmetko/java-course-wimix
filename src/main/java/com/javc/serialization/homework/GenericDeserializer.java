@@ -16,14 +16,16 @@ public class GenericDeserializer {
         objectOutputStream.close();
     }
 
-    public static <T> T getObject(File file, Class<T> cls) throws IOException, ClassNotFoundException {
+    @SneakyThrows
+    public static <T> T getObject(File file, Class<T> cls) {
         ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));
         Object obj = (T) objectInputStream.readObject();
         objectInputStream.close();
         return (T) obj;
     }
 
-    public static <T> T getObject_2(File file, Class<T> cls) throws IOException, ClassNotFoundException {
+    @SneakyThrows
+    public static <T> T getObject_2(File file, Class<T> cls) {
         ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));
         T obj = (T) objectInputStream.readObject();
         objectInputStream.close();
@@ -34,7 +36,7 @@ public class GenericDeserializer {
      * Human.class - возвращает объект Class с типом Human.
      *
      * @see <a href="https://docs.oracle.com/javase/tutorial/reflect/class/classNew.html">
-     *     https://docs.oracle.com/javase/tutorial/reflect/class/classNew.html</a>
+     * https://docs.oracle.com/javase/tutorial/reflect/class/classNew.html</a>
      */
     @SneakyThrows
     public static void main(String[] args) {

@@ -7,6 +7,7 @@ import lombok.SneakyThrows;
 import java.io.File;
 import java.util.List;
 
+@SuppressWarnings("unchecked")
 public class PojoTest {
 
     @SneakyThrows
@@ -27,7 +28,8 @@ public class PojoTest {
   }
 ]
 */
-        List<User> users = objectMapper.readValue(file, new TypeReference<>() {});
+        List<User> users = objectMapper.readValue(file, new TypeReference<>() {
+        });
         System.out.println(users
                 .get(0)
                 .getName());
@@ -59,5 +61,10 @@ public class PojoTest {
         andrey.setAddress("Minsk");
 
         objectMapper.writeValue(new File("src/main/java/com/javc/serialization/dto_pojo/users3.json"), users2);
+
+
+        //Не записывать результат в файл, а вернуть строку в формате json
+        String myJsonString = objectMapper.writeValueAsString(users2);
+        System.out.println(myJsonString);
     }
 }

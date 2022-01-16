@@ -71,9 +71,15 @@ public class PojoTest {
                 .writerWithDefaultPrettyPrinter()
                 .writeValueAsString(users2);
 
-        System.out.println(myJsonString);
+//        System.out.println(myJsonString);
 
         //Сериализовать в строку объект HashMap
+        /*
+         * Serialization converts a Java object into a stream of bytes,
+         * which can be persisted or shared as needed.
+         * Java Maps are collections that map a key Object to a value Object,
+         * and are often the least intuitive objects to serialize.
+         */
         Map<String, Object> user1 = new LinkedHashMap<>();
         user1.put("name", "Alex");
         user1.put("address", "MSQ");
@@ -92,6 +98,14 @@ public class PojoTest {
                 .writerWithDefaultPrettyPrinter()
                 .writeValueAsString(usersMap);
 
-        System.out.println(fromMapToString);
+//        System.out.println(fromMapToString);
+
+
+        //Десериализация из строки в формате json в объект HshMap
+        TypeReference<HashMap<String, Object>> typeRef
+                = new TypeReference<HashMap<String, Object>>() {
+        };
+        Map<String, Object> mapFromString = objectMapper.readValue(fromMapToString, typeRef);
+//        System.out.println(mapFromString.toString());
     }
 }

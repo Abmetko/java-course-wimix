@@ -86,11 +86,11 @@
 
 * Жизненный цикл Maven.
 
-* pom.xml: dependency, plugin, property.
+* pom.xml: `dependency`, `plugin`, `properties`.
 
-* Artifact.
+* `groupId`.
 
-* Archetype.
+* `artifactId`.
 
 * Локальный репозиторий (.m2). [Maven central](https://mvnrepository.com/).
 

@@ -20,7 +20,7 @@ public class HomeWork_1 {
     private static BufferedReader bufferedReader;
 
     public static void readPrintValuesWithLoop() throws IOException {
-        bufferedReader = new BufferedReader(new FileReader("src/main/java/com/homework/names.txt"));
+        bufferedReader = new BufferedReader(new FileReader("src/main/java/com/generic/names.txt"));
 
         bufferedReader.readLine();//skip header
 
@@ -36,7 +36,7 @@ public class HomeWork_1 {
     }
 
     public static void readPrintValuesWithStream() throws IOException {
-        bufferedReader = new BufferedReader(new FileReader("src/main/java/com/homework/names.txt"));
+        bufferedReader = new BufferedReader(new FileReader("src/main/java/com/generic/names.txt"));
 
         bufferedReader.readLine();//skip header
 

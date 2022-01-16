@@ -1,4 +1,4 @@
-package com.javc.serialization.homework;
+package com.javc.serialization.generic;
 
 import com.javc.serialization.base.Human;
 import lombok.SneakyThrows;
@@ -16,6 +16,7 @@ public class GenericDeserializer {
         objectOutputStream.close();
     }
 
+    //передает Class<T>, чтобы далее использовать обобщеный тип.
     @SneakyThrows
     public static <T> T getObject(File file, Class<T> cls) {
         ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));

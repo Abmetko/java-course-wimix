@@ -7,7 +7,7 @@ import java.io.OutputStream;
 public class HomeWork_5 {
 
     public static void main(String[] args) throws IOException {
-        OutputStream outputStream = new FileOutputStream("src/main/java/com/homework/letters.txt");
+        OutputStream outputStream = new FileOutputStream("src/main/java/com/generic/letters.txt");
 
         char[] array = "Hello".toCharArray();
 

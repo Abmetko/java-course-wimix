@@ -5,7 +5,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @SuppressWarnings("unchecked")
 public class PojoTest {
@@ -64,7 +67,31 @@ public class PojoTest {
 
 
         //Не записывать результат в файл, а вернуть строку в формате json
-        String myJsonString = objectMapper.writeValueAsString(users2);
+        String myJsonString = objectMapper
+                .writerWithDefaultPrettyPrinter()
+                .writeValueAsString(users2);
+
         System.out.println(myJsonString);
+
+        //Сериализовать в строку объект HashMap
+        Map<String, Object> user1 = new LinkedHashMap<>();
+        user1.put("name", "Alex");
+        user1.put("address", "MSQ");
+        user1.put("age", 50);
+
+        Map<String, Object> user2 = new LinkedHashMap<>();
+        user2.put("name", "Tom");
+        user2.put("address", "NZD");
+        user2.put("age", 35);
+
+        Map<String, Object> usersMap = new HashMap<>();
+
+        usersMap.put("users", new Map[]{user1, user2});
+
+        String fromMapToString = objectMapper
+                .writerWithDefaultPrettyPrinter()
+                .writeValueAsString(usersMap);
+
+        System.out.println(fromMapToString);
     }
 }

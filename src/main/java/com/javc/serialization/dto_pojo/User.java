@@ -1,9 +1,8 @@
 package com.javc.serialization.dto_pojo;
 
-import com.fasterxml.jackson.annotation.*;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @SuppressWarnings("all")
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -20,8 +19,6 @@ public class User {
     private String address;
     @JsonProperty("age")
     private Integer age;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("name")
     public String getName() {
@@ -51,15 +48,5 @@ public class User {
     @JsonProperty("age")
     public void setAge(Integer age) {
         this.age = age;
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 }

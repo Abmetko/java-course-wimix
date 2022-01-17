@@ -31,11 +31,10 @@ public class PojoTest {
   }
 ]
 */
-        List<User> users = objectMapper.readValue(file, new TypeReference<List<User>>() {
-        });
-        System.out.println(users
-                .get(0)
-                .getName());
+        List<User> users = objectMapper.readValue(file, new TypeReference<List<User>>() {});
+//        System.out.println(users
+//                .get(0)
+//                .getName());
 /*
 {
   "users": [

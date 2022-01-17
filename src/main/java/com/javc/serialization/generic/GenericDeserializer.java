@@ -20,9 +20,9 @@ public class GenericDeserializer {
     @SneakyThrows
     public static <T> T getObject(File file, Class<T> cls) {
         ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(file));
-        Object obj = (T) objectInputStream.readObject();
+        Object obj = objectInputStream.readObject();
         objectInputStream.close();
-        return (T) obj;
+        return cls.cast(obj);
     }
 
     @SneakyThrows

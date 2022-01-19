@@ -13,7 +13,7 @@ public class DateTimeHomeWork {
 
     private static final String PATTERN_1 = "E, dd MMM yyyy HH:mm:ss";
 
-    private static final String PATTERN_2 = "'Created:' E MMM dd HH:mm:ss z yyyy";//экранирование 'символов'
+    private static final String PATTERN_2 = "'Created: 'E MMM dd HH:mm:ss z yyyy";//экранирование 'символов'
 
     public static String getCurrentTimeInPattern(String pattern) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);

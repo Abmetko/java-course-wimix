@@ -5,6 +5,7 @@ public class Human {
     public String name = "test";
     public String address = "test";
     public int age = 10;
+
     public Human() {
     }
 

@@ -8,6 +8,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
+import java.util.Locale;
 
 public class DateTimeHomeWork {
 
@@ -33,9 +34,20 @@ public class DateTimeHomeWork {
     }
 
     public static boolean validateDateFormat(String pattern, String dateToValidate) {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(pattern);
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(pattern, Locale.US);//for AM/PM instead of am/pm
         try {
             dateTimeFormatter.parse(dateToValidate);
+            return true;
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
+
+    public static boolean validateDateFormat2(String pattern) {
+        LocalDateTime date = LocalDateTime.now().minusHours(12);
+
+        try {
+            System.out.println(date.format(DateTimeFormatter.ofPattern(pattern)));
             return true;
         } catch (DateTimeParseException e) {
             return false;
@@ -47,5 +59,8 @@ public class DateTimeHomeWork {
         System.out.println(getCurrentTimeInPatternIncreasedInMinutes(PATTERN_1, 10));
         System.out.println(getCurrentTimeInPatternInTimeZone(PATTERN_1, "Europe/Berlin"));
         System.out.println(validateDateFormat(PATTERN_2,"Created: Mon Dec 27 21:28:32 MSK 2021"));
+        System.out.println(validateDateFormat("'Last edited' MMM dd, yyyy, h:mm a", "Last edited Jan 20, 2022, 4:19 PM"));
+
+//       validateDateFormat2("MMM dd, yyyy, h:mm a");
     }
 }

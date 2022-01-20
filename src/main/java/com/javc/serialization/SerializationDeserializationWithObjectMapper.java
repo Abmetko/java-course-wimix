@@ -16,7 +16,7 @@ public class SerializationDeserializationWithObjectMapper {
 
         //ObjectMapper API
         ObjectMapper mapper = new ObjectMapper();
-        var path = "src/main/java/com/javc/serialization/user.json";
+        var path = "src/main/java/com/javc/serialization/dog.json";
 
         //сериализация данных объекта в файл(json формат)
         mapper.writeValue(new File(path), new Human("John", "DC", 15));

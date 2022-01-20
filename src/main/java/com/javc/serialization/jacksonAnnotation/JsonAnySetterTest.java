@@ -7,6 +7,9 @@ import java.io.File;
 
 public class JsonAnySetterTest {
 
+    /*
+    Для случая, если в json присутствуют поля, которые явно не определены в pojo классе
+     */
     @SneakyThrows
     public static void main(String[] args) {
         ObjectMapper objectMapper = new ObjectMapper();

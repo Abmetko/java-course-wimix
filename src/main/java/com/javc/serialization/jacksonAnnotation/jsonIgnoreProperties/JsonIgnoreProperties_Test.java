@@ -11,11 +11,11 @@ public class JsonIgnoreProperties_Test {
 
     public static void main(String[] args) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.readValue(new File("src/main/java/com/javc/serialization/jacksonAnnotation/jsonIgnoreProperties/items.json"), Items1.class);
+        Items1 items1 = objectMapper.readValue(new File("src/main/java/com/javc/serialization/jacksonAnnotation/jsonIgnoreProperties/items.json"), Items1.class);
     }
 }
 //поле помеченное этой аннотацией не будет десериализовано
-@JsonIgnoreProperties(ignoreUnknown = true) //@JsonIgnoreProperties({ "id" })
+@JsonIgnoreProperties(ignoreUnknown = true) //для всех неизвестных полей или конкретных @JsonIgnoreProperties({ "id" })
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -28,7 +28,7 @@ class Items1 {
     private String id;
 
     @JsonProperty("items")
-    @JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+    @JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)//для случая, когда может быть вариант массива json объектов или объекта
     private List<Item2> items = null;
 
     @JsonProperty("id")

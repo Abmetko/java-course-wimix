@@ -1,14 +1,9 @@
-
 package com.javc.serialization.jacksonAnnotation.jsonAnyGetter_jsonAnySetter;
+
+import com.fasterxml.jackson.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @SuppressWarnings("all")
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -26,7 +21,7 @@ public class Dog {
     @JsonProperty("age")
     private Integer age;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();//в этот мэп помещаются все новые поля(связка ключ-значение)
 
     @JsonProperty("name")
     public String getName() {

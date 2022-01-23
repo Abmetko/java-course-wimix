@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "temp",
         "wind_speed"
 })
-class Days {
+public class Days {
 
     @JsonProperty("dt")
     private Integer dt;

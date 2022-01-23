@@ -1,6 +1,7 @@
 package com.javc.api.services;
 
 import com.javc.dto.Weather;
+import io.restassured.http.ContentType;
 
 import static io.restassured.RestAssured.given;
 
@@ -18,6 +19,7 @@ public class ClimateService {
                 .get("https://community-open-weather-map.p.rapidapi.com/climate/month")
                 .then()
                 .statusCode(200)
+                .contentType(ContentType.JSON)
                 .extract()
                 .as(Weather.class);
     }

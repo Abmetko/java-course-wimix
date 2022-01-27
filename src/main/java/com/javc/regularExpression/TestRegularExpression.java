@@ -27,11 +27,15 @@ public class TestRegularExpression {
     }
 
     public static void main(String[] args) {
-        System.out.println(TEST.split("Waived by ")[1].split("\nReason")[0]);
-
-        System.out.println(getOnlyDigits());
-        System.out.println(getOnlyDigitsAndDotComma(CURRENT_PRICE_1));
-        System.out.println(getOnlyDigitsAndDotComma(CURRENT_PRICE_2));
-        System.out.println(removeDigitsFromValue(ORDER_NUMBER));
+//        System.out.println(TEST.split("Waived by ")[1].split("\nReason")[0]);
+//
+//        System.out.println(getOnlyDigits());
+//        System.out.println(getOnlyDigitsAndDotComma(CURRENT_PRICE_1));
+//        System.out.println(getOnlyDigitsAndDotComma(CURRENT_PRICE_2));
+//        System.out.println(removeDigitsFromValue(ORDER_NUMBER));
+//        System.out.println(ORDER_NUMBER.replaceAll(" ",""));
+//        System.out.println(TEST.split("Waived by John Doe ")[1].split("\n")[0]);
+        String str = getOnlyDigitsAndDotComma(CURRENT_PRICE_1).replaceAll(",",".");
+        System.out.println(Double.parseDouble(str) + 100);
     }
 }

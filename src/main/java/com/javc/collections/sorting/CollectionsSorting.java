@@ -36,14 +36,15 @@ public class CollectionsSorting {
     }
 
     public static void main(String[] args) {
-        sortingOfCollection();
-        sortingOfCollectionWithCustomObjects();
+//        sortingOfCollection();
+//        sortingOfCollectionWithCustomObjects();
         sortingOfCollectionWhichCannotImplementComparable();
-        sortingOfArrayWithCollection();
+//        sortingOfArrayWithCollection();
     }
 }
 
 class Human implements Comparable<Human> {
+
     public final int age;
 
     public Human(int age) {

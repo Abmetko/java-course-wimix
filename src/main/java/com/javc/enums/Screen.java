@@ -1,5 +1,8 @@
 package com.javc.enums;
 
 public enum Screen {
-    SPLASH, SIGN_IN, SIGN_UP, MAIN
+    SPLASH,
+    SIGN_IN,
+    SIGN_UP,
+    MAIN
 }

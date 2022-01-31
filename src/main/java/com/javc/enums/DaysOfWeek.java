@@ -17,4 +17,17 @@ public enum DaysOfWeek {
 
     private String fullName;
     private String shortName;
+
+//    public String getFullName() {
+//        return fullName;
+//    }
+//
+//    public String getShortName() {
+//        return shortName;
+//    }
+//
+//    DaysOfWeek(String fullName, String shortName) {
+//        this.shortName = shortName;
+//        this.fullName = fullName;
+//    }
 }

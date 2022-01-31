@@ -21,7 +21,7 @@ public class Dog {
     @JsonProperty("age")
     private Integer age;
     @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();//в этот мэп помещаются все новые поля(связка ключ-значение)
+    private Map<String, Object> unknown = new HashMap<String, Object>();//в этот мэп помещаются все новые поля(связка ключ-значение)
 
     @JsonProperty("name")
     public String getName() {
@@ -55,13 +55,13 @@ public class Dog {
 
     //эта аннотация нужна для получения поля(которое определено как дополнительное) десериализованного объекта
     @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
+    public Map<String, Object> getUnknown() {
+        return this.unknown;
     }
 
     //без этой аннотации будет ошибка в процессе десериализации дополнительного поля объекта
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+        this.unknown.put(name, value);
     }
 }

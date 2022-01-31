@@ -13,22 +13,21 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class WeatherTest extends BaseTest {
 
-    private final static String CITY = "Minsk";
     private Weather weather;
 
     @DisplayName("Number of days should be equal to 30")
     @Order(1)
     @Test
     public void numberOfDaysShouldBe30() {
-        weather = climateService.getWeather(CITY);
-        assertEquals(30, weather.getList().size());
+        weather = climateService.getWeather();
+        Assertions.assertEquals(30, weather.getList().size());
     }
 
     @DisplayName("City name should be equal to \"Minsk\"")
     @Test
     public void checkCityName() {
-        assumeTrue(weather != null);
-        assertEquals(CITY, weather.getCity().getName());
+        Assumptions.assumeTrue(weather != null);
+        assertEquals("Minsk", weather.getCity().getName());
     }
 
     @DisplayName("Country code name should be equal to \"BY\"")
@@ -46,10 +45,10 @@ public class WeatherTest extends BaseTest {
     }
 
     public boolean isTheFirstDayEqualToCurrent(int timestamp) {
-        LocalDate expectedDate = new Timestamp(timestamp * 1000L)//modify from epoch timestamp to timestamp in milliseconds
+        LocalDate actual = new Timestamp(timestamp * 1000L)//modify from epoch timestamp to timestamp in milliseconds
                 .toLocalDateTime()
                 .toLocalDate();
-        LocalDate actualDate = LocalDate.now();
-        return expectedDate.equals(actualDate);
+        LocalDate expected = LocalDate.now();
+        return actual.equals(expected);
     }
 }

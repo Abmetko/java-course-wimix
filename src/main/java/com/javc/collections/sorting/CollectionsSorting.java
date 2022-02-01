@@ -7,6 +7,13 @@ import java.util.List;
 
 public class CollectionsSorting {
 
+    /**
+     * Для того чтобы можно было сортировать коллекцию, ее объекты должны имплементировать интерфейс Comparable.
+     * Любой объектный тип, такой как например Integer, String и т.д. имплементируют интерфейс и переопределяют методы compareTo()
+     *
+     * @see Integer#compareTo(Integer)
+     * @see String#compareTo(String)
+     */
     public static void sortingOfCollection() {
         List<Integer> integerList = Arrays.asList(1, 2, 4, 5, 3);
         Collections.sort(integerList);

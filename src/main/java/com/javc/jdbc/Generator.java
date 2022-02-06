@@ -33,7 +33,7 @@ public class Generator {
     }
 
     @SneakyThrows
-    public static <T> T getObject(String body, Class<T> cls) {
+    public static <T> T parse(String body, Class<T> cls) {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(body, cls);
     }
@@ -43,7 +43,7 @@ public class Generator {
     }
 
     public static void main(String[] args) throws IOException {
-        List<Day> days = getObject(getResponse(), Weather.class).getDays();
+        List<Day> days = parse(getResponse(), Weather.class).getDays();
 
         List<LocalDateTime> dates = new ArrayList<>();
 

@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.net.URISyntaxException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 import static com.javc.jdbc.Generator.getResponse;
@@ -17,15 +18,17 @@ public class WriteSqlResultToCsvFile {
     @SneakyThrows
     @SuppressWarnings("all")
     public static void main(String[] args) throws SQLException, URISyntaxException, ClassNotFoundException {
-        Connector connector = new Connector();
-        connector
-                .getConnection()
-                .getStatement();
+        DBConnector connector = new DBConnector();
 
-        SqlExecutor sqlExecutor = new SqlExecutor(Connector.statement);
+        connector.getConnection();
+
+        Statement statement = connector.getStatement();
+
+        SqlExecutor sqlExecutor = new SqlExecutor(statement);
+
         sqlExecutor.clearTable();
 
-        List<Day> days = Generator.getObject(getResponse(), Weather.class).getDays();
+        List<Day> days = Generator.parse(getResponse(), Weather.class).getDays();
 
         sqlExecutor.insertDataIntoTable(days);
 
@@ -50,9 +53,8 @@ public class WriteSqlResultToCsvFile {
         }
         stringBuilder.setLength(stringBuilder.length() - 1);//delete the last symbol
 
-        connector
-                .closeStatement()
-                .closeConnection();
+        connector.closeStatement();
+        connector.closeConnection();
 
         FileWriter fileWriter = new FileWriter("src/main/java/com/javc/jdbc/temperatures.CSV");
         fileWriter.write(stringBuilder.toString());

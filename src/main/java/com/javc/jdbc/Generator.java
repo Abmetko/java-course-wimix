@@ -38,7 +38,7 @@ public class Generator {
         return objectMapper.readValue(body, cls);
     }
 
-    public static boolean isDatesEquals(LocalDateTime d1, LocalDateTime d2) {
+    public static boolean areDatesEqual(LocalDateTime d1, LocalDateTime d2) {
         return d1.equals(d2);
     }
 
@@ -49,6 +49,6 @@ public class Generator {
 
         days.forEach(day -> dates.add(new Timestamp(day.getDt() * 1000).toLocalDateTime()));
 
-        System.out.println(isDatesEquals(dates.get(dates.size() - 1), dates.get(0).plusDays(29)));
+        System.out.println(areDatesEqual(dates.get(dates.size() - 1), dates.get(0).plusDays(29)));
     }
 }

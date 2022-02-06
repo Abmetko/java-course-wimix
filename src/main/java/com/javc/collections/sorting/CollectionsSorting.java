@@ -45,8 +45,9 @@ public class CollectionsSorting {
     public static void main(String[] args) {
 //        sortingOfCollection();
 //        sortingOfCollectionWithCustomObjects();
-        sortingOfCollectionWhichCannotImplementComparable();
+//        sortingOfCollectionWhichCannotImplementComparable();
 //        sortingOfArrayWithCollection();
+        System.out.println(new Human(10));
     }
 }
 
@@ -76,6 +77,7 @@ class Human implements Comparable<Human> {
 Comparable (например сторонняя библиотека)
 */
 class HomoSapiens {
+
     public final int age;
 
     public HomoSapiens(int age) {

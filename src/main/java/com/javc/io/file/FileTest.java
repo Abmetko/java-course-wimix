@@ -53,8 +53,6 @@ public class FileTest {
     public static void createFile() {
         FILE.createNewFile();
 
-        PrintWriter printWriter = new PrintWriter(FILE);
-
         List<Object[]> users = new ArrayList<>();
 
         Object[] user1 = {"Jack", "Black", 21};

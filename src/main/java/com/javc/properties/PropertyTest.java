@@ -8,5 +8,7 @@ public class PropertyTest {
         System.out.println(getProperty("prop.value"));
 
         PropertyProvider.setProperty("user.name","Jack");
+
+        System.out.println(getProperty("user.name"));
     }
 }

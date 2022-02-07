@@ -2,8 +2,10 @@ package com.javc.properties;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Properties;
 
+@SuppressWarnings("all")
 public class PropertyProvider {
 
     private final static String FILE_PATH = "/application.properties";
@@ -11,7 +13,6 @@ public class PropertyProvider {
     private static Properties properties;
 
     private PropertyProvider() {
-        //singleton
     }
 
     public static synchronized String getProperty(String propertyName) {
@@ -41,7 +42,9 @@ public class PropertyProvider {
         }
         properties.setProperty(propName, propValue);
         try {
-            FileOutputStream fileOutputStream = new FileOutputStream("src/main/resources" + FILE_PATH);
+            URL url = PropertyProvider.class.getResource(FILE_PATH);
+            FileOutputStream fileOutputStream = new FileOutputStream(
+                    url.getPath()); //file:/Users/andrey/Desktop/java-course-wimix/target/classes/application.properties
             properties.store(fileOutputStream, null);
             fileOutputStream.close();
         } catch (IOException e) {

@@ -36,13 +36,13 @@ public class SynchronizeTest {
         Thread thread_5 = new Thread(() -> setCurrentTime());
         Thread thread_6 = new Thread(() -> setCurrentTime());
 
-        //старый способ с анонимным классом
-        Thread thread_7 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                setCurrentTime();
-            }
-        });
+//        //старый способ с анонимным классом
+//        Thread thread_7 = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                setCurrentTime();
+//            }
+//        });
 
         thread_1.start();
         thread_2.start();

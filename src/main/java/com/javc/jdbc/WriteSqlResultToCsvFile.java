@@ -51,7 +51,7 @@ public class WriteSqlResultToCsvFile {
             stringBuilder.append(resultSet.getString("record_min"));
             stringBuilder.append("\n");
         }
-        stringBuilder.setLength(stringBuilder.length() - 1);//delete the last symbol
+        stringBuilder.setLength(stringBuilder.length() - 1);//delete the last symbol --> "\n"
 
         connector.closeStatement();
         connector.closeConnection();

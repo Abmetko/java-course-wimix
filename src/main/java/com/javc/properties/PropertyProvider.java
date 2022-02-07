@@ -35,18 +35,13 @@ public class PropertyProvider {
         }
     }
 
-    /**
-     * Тут нет смысла синхронизировать метод, т. к. он синхронизирован в
-     *
-     * @see java.util.Properties#store0(java.io.BufferedWriter, java.lang.String, boolean)
-     */
     public static void setProperty(String propName, String propValue) {
         if (properties == null) {
             loadProperty();
         }
         properties.setProperty(propName, propValue);
         try {
-            FileOutputStream fileOutputStream = new FileOutputStream("src/main/resources/application.properties");
+            FileOutputStream fileOutputStream = new FileOutputStream("src/main/resources" + FILE_PATH);
             properties.store(fileOutputStream, null);
             fileOutputStream.close();
         } catch (IOException e) {

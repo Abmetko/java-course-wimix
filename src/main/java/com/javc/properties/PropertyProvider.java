@@ -30,7 +30,7 @@ public class PropertyProvider {
     private static synchronized void loadProperty() {
         properties = new Properties();
         try {
-            properties.load(PropertyProvider.class.getResourceAsStream(FILE_PATH));
+            properties.load(PropertyProvider.class.getResourceAsStream(FILE_PATH));///Users/andrey/Desktop/java-course-wimix/target/classes/application.properties
         } catch (IOException e) {
             e.printStackTrace();
         }

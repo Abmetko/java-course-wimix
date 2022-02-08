@@ -15,7 +15,6 @@ public class DBConnector {
     @SneakyThrows
     public void getConnection() {
         Class.forName("org.postgresql.Driver");
-
         String url = "jdbc:postgresql://ec2-52-208-185-143.eu-west-1.compute.amazonaws.com/dbbte6nc0n2o6f";
         Properties props = new Properties();
         props.setProperty("user", "diralmgxzqsotw");

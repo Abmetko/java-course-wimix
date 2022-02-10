@@ -42,7 +42,7 @@
 
 * Ввод/вывод данных.
 
-* Работа с CSV файлом. Библиотека [OpenCSV](http://opencsv.sourceforge.net/).
+* Работа с CSV файлом. Библиотека [OpenCSV](http://opencsv.sourceforge.net/). Bean-Based сериализация и десериализация.
 
 * Функциональный интерфейс. Лямбда выражения.
 

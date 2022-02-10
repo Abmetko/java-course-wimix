@@ -10,7 +10,7 @@ import java.util.List;
 public class BeanBasedReadingWriting {
 
     //каждая строка из CSV файла десериализуется в объект, где колонки сетаются в поля объекта
-    public static <T> List<T> readValue(String path, Class<T> cls) throws IOException {
+    public static <T> List<T> readValue(String path, Class<T> cls, int skippedLines) throws IOException {
         ColumnPositionMappingStrategy<T> mappingStrategy = new ColumnPositionMappingStrategy<>();
         mappingStrategy.setType(cls);
 
@@ -18,7 +18,7 @@ public class BeanBasedReadingWriting {
         CsvToBean<T> cb = new CsvToBeanBuilder<T>(reader)
                 .withIgnoreEmptyLine(true)
                 .withMappingStrategy(mappingStrategy)
-                .withSkipLines(1)
+                .withSkipLines(skippedLines)
                 .build();
 
         List<T> list = cb.parse();
@@ -38,7 +38,7 @@ public class BeanBasedReadingWriting {
     }
 
     public static void main(String[] args) throws Exception {
-        List<Weather> list = readValue("src/main/resources/temperatures.CSV", Weather.class);
+        List<Weather> list = readValue("src/main/resources/temperatures.CSV", Weather.class, 1);
 
         writeValue("src/main/java/com/javc/csv/open_csv/written_csv.CSV", list);
     }

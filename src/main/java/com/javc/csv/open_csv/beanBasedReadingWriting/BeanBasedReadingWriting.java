@@ -1,4 +1,4 @@
-package com.javc.csv.open_csv;
+package com.javc.csv.open_csv.beanBasedReadingWriting;
 
 import com.javc.csv.open_csv.beanBasedReadingWriting.Weather;
 import com.opencsv.CSVWriter;
@@ -40,6 +40,6 @@ public class BeanBasedReadingWriting {
     public static void main(String[] args) throws Exception {
         List<Weather> list = readValue("src/main/resources/temperatures.CSV", Weather.class, 1);
 
-        writeValue("src/main/java/com/javc/csv/open_csv/written_csv.CSV", list);
+        writeValue("src/main/java/com/javc/csv/open_csv/beanBasedReadingWriting/written_csv.CSV", list);
     }
 }

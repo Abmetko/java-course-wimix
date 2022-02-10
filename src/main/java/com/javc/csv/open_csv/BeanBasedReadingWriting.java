@@ -7,22 +7,21 @@ import com.opencsv.bean.*;
 import java.io.*;
 import java.util.List;
 
-@SuppressWarnings("all")
 public class BeanBasedReadingWriting {
 
     //каждая строка из CSV файла десериализуется в объект, где колонки сетаются в поля объекта
-    public static List<Weather> readValue(String path, Class clazz) throws IOException {
-        ColumnPositionMappingStrategy mappingStrategy = new ColumnPositionMappingStrategy();
-        mappingStrategy.setType(clazz);
+    public static <T> List<T> readValue(String path, Class<T> cls) throws IOException {
+        ColumnPositionMappingStrategy<T> mappingStrategy = new ColumnPositionMappingStrategy<>();
+        mappingStrategy.setType(cls);
 
         Reader reader = new FileReader(path);
-        CsvToBean cb = new CsvToBeanBuilder(reader)
+        CsvToBean<T> cb = new CsvToBeanBuilder<T>(reader)
                 .withIgnoreEmptyLine(true)
                 .withMappingStrategy(mappingStrategy)
                 .withSkipLines(1)
                 .build();
 
-        List<Weather> list = cb.parse();
+        List<T> list = cb.parse();
         reader.close();
         return list;
     }
@@ -30,7 +29,7 @@ public class BeanBasedReadingWriting {
     public static <T> void writeValue(String path, List<T> list) throws Exception {
         Writer writer = new FileWriter(path);
 
-        StatefulBeanToCsv sbc = new StatefulBeanToCsvBuilder(writer)
+        StatefulBeanToCsv<T> sbc = new StatefulBeanToCsvBuilder<T>(writer)
                 .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
                 .build();
 
@@ -40,7 +39,6 @@ public class BeanBasedReadingWriting {
 
     public static void main(String[] args) throws Exception {
         List<Weather> list = readValue("src/main/resources/temperatures.CSV", Weather.class);
-        list.stream().forEach(weather -> System.out.println(weather));
 
         writeValue("src/main/java/com/javc/csv/open_csv/written_csv.CSV", list);
     }

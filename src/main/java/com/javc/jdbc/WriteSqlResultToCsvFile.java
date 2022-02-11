@@ -1,10 +1,13 @@
 package com.javc.jdbc;
 
+import com.javc.csv.open_csv.base_usage.OpenCSV;
 import com.javc.jdbc.dto.Day;
 import com.javc.jdbc.dto.Weather;
 import lombok.SneakyThrows;
 
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.Reader;
 import java.net.URISyntaxException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -53,11 +56,20 @@ public class WriteSqlResultToCsvFile {
         }
         stringBuilder.setLength(stringBuilder.length() - 1);//delete the last symbol --> "\n"
 
-        connector.closeStatement();
-        connector.closeConnection();
-
         FileWriter fileWriter = new FileWriter("src/main/java/com/javc/jdbc/temperatures.CSV");
         fileWriter.write(stringBuilder.toString());
         fileWriter.close();
+
+        //homework --> read data from csv file and inject them into table(data base)
+        sqlExecutor.clearTable();
+
+        Reader reader = new FileReader("src/main/java/com/javc/jdbc/temperatures.CSV");
+
+        List<String[]> lines = OpenCSV.readAll(reader, OpenCSV.getParser(), 1);
+
+        sqlExecutor.insertDataIntoTable2(lines);
+
+        connector.closeStatement();
+        connector.closeConnection();
     }
 }

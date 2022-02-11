@@ -57,4 +57,22 @@ public class SqlExecutor {
     public void dropTable() {
         statement.execute("DROP TABLE Temperature");
     }
+
+    //for homework
+    public void insertDataIntoTable2(List<String[]> lines) {
+        lines.forEach(line -> {
+            try {
+                statement.execute("INSERT INTO Temperature (average, average_max, average_min, record_max, record_min) " +
+                        "VALUES (" +
+                        line[0] + ", " +
+                        line[1] + ", " +
+                        line[2] + ", " +
+                        line[3] + ", " +
+                        line[4] +
+                        ");");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+    }
 }

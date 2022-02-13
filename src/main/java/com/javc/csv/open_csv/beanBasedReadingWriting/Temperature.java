@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Weather {
+public class Temperature {
 
     @CsvBindByPosition(position = 0)
     private Double average;
@@ -25,7 +25,7 @@ public class Weather {
 
     @Override
     public String toString() {
-        return "Weather{" +
+        return "Temperature{" +
                 "average=" + average +
                 ", average_max=" + average_max +
                 ", average_min=" + average_min +

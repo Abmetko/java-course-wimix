@@ -14,6 +14,7 @@ public class BeanBasedReadingWriting {
         mappingStrategy.setType(cls);
 
         CsvToBean<T> cb = new CsvToBeanBuilder<T>(reader)
+                .withIgnoreQuotations(true)
                 .withIgnoreEmptyLine(true)
                 .withMappingStrategy(mappingStrategy)
                 .withSkipLines(skippedLines)
@@ -24,6 +25,7 @@ public class BeanBasedReadingWriting {
 
     public static <T> void writeValue(Writer writer, List<T> list) throws Exception {
         StatefulBeanToCsv<T> sbc = new StatefulBeanToCsvBuilder<T>(writer)
+                .withApplyQuotesToAll(false)
                 .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
                 .build();
 

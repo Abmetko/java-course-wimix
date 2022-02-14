@@ -31,7 +31,7 @@ public class OpenCSV {
 
     public static void writerAll(List<String[]> stringArray, File file) throws IOException {
         CSVWriter writer = new CSVWriter(new FileWriter(file));
-        writer.writeAll(stringArray);
+        writer.writeAll(stringArray,false);//игнорировать ковычки
         writer.close();
     }
 

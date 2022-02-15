@@ -15,7 +15,7 @@ public class PropertyProvider {
     private PropertyProvider() {
     }
 
-    public static synchronized String getProperty(String propertyName) {
+    public static String getProperty(String propertyName) {
         if (properties == null) {
             loadProperty();
         }
@@ -28,7 +28,7 @@ public class PropertyProvider {
     }
 
     private static synchronized void loadProperty() {
-        properties = new Properties();
+        properties = new Properties();//нужна синхронизация
         try {
             properties.load(PropertyProvider.class.getResourceAsStream(FILE_PATH));///Users/andrey/Desktop/java-course-wimix/target/classes/application.properties
         } catch (IOException e) {
@@ -36,7 +36,11 @@ public class PropertyProvider {
         }
     }
 
-    public static void setProperty(String propName, String propValue) {
+    public static void setProperty(String key, String value) {
+        properties.setProperty(key, value);
+    }
+
+    public static void storeProperty(String propName, String propValue) {
         if (properties == null) {
             loadProperty();
         }

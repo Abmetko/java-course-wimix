@@ -3,12 +3,13 @@ package com.javc.api.services;
 import com.javc.dto.Weather;
 import io.restassured.http.ContentType;
 
+import static com.javc.properties.PropertyProvider.getProperty;
 import static io.restassured.RestAssured.given;
 
 public class ClimateService {
 
-    private final static String X_RAPID_API_KEY = "df5e4a8bbamshaab7d290241c1ecp1cb031jsn1ded64b3bdfb";
-    private final static String X_RAPID_API_HOST = "community-open-weather-map.p.rapidapi.com";
+    private final static String X_RAPID_API_KEY = getProperty("x.rapid.api.key");
+    private final static String X_RAPID_API_HOST = getProperty("x.rapid.api.host");
 
     public Weather getWeather() {
         return given()

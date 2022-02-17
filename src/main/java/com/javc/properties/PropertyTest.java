@@ -1,7 +1,6 @@
 package com.javc.properties;
 
-import static com.javc.properties.PropertyProvider.getProperty;
-import static com.javc.properties.PropertyProvider.setProperty;
+import static com.javc.properties.PropertyProvider.*;
 
 public class PropertyTest {
 
@@ -13,5 +12,7 @@ public class PropertyTest {
 
         setProperty("hello", "world");
         System.out.println(getProperty("hello"));
+
+        System.out.println(getMap());
     }
 }

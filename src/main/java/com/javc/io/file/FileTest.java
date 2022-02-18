@@ -2,10 +2,7 @@ package com.javc.io.file;
 
 import lombok.SneakyThrows;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,9 +74,26 @@ public class FileTest {
         bufferedReader.close();
     }
 
-    public static void main(String[] args) {
+    public static String readFile(File file) throws IOException, FileNotFoundException {
+        FileReader fileReader = new FileReader(file);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        Object line;
+        StringBuilder stringBuilder = new StringBuilder();
+        while ((line = bufferedReader.readLine()) != null) {
+            stringBuilder.append(line);
+            stringBuilder.append("\n");
+        }
+        bufferedReader.close();
+        fileReader.close();
+        return stringBuilder.toString();
+    }
+
+    public static void main(String[] args) throws IOException {
         createFile();
         writeDataInFile();
         readDataFromFile();
+
+//        System.out.println(readFile(new File("src/main/java/com/javc/io/streams/file.txt")));
+
     }
 }

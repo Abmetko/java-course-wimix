@@ -40,7 +40,7 @@
 
 * Паттерн: object pool.
 
-* Ввод/вывод данных.
+* Ввод/вывод данных. Байтовые(InputStream, OutputStream) и символьные потоки(Reader, Writer). Кодировка и де-кодировка потока байтов byte[ ] в строку.
 
 * Работа с CSV файлом. Библиотека [OpenCSV](http://opencsv.sourceforge.net/). Bean-Based сериализация и десериализация.
 
@@ -103,7 +103,7 @@
 * Автоматизация тестирования rest API с библиотекой [Restassured](https://rest-assured.io/). Сериализация/десериализация с помощью библиотеки [Jackson](https://mvnrepository.com/search?q=com.fasterxml.jackson.core). 
 [POJO классы](https://json2csharp.com/json-to-pojo).
 
-* TDD: [TestNG](https://testng.org/doc/). Аннотации. Настрока maven плагина. Создание и конфигурация testng.xml.
+* TDD: [TestNG](https://testng.org/doc/). Аннотации. Настройка maven плагина. Создание и конфигурация testng.xml.
 
 * TDD: [Junit5](https://junit.org/junit5/docs/current/user-guide/). Аннотации. Параллелизм. Конфигурирование.
 

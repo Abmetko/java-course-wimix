@@ -2,6 +2,7 @@ package com.javc.io.streams;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 /*
 Разница между InputStream и Reader.
@@ -28,11 +29,10 @@ FileReader наследуется от InputStreamReader, он использу�
 public class OutputStreamTest {
 
     public static void main(String[] args) throws IOException {
-        String str = "Hello world";
-        byte[] buffer = str.getBytes();
+        byte[] bytes = "Hello\nworld".getBytes(StandardCharsets.UTF_16); //закодировать поток байтов в строку согласно UTF-16
 
-        FileOutputStream fileOutputStream = new FileOutputStream("src/main/java/com/io/streams/file.txt");
-        fileOutputStream.write(buffer, 0, buffer.length);
+        FileOutputStream fileOutputStream = new FileOutputStream("src/main/java/com/javc/io/streams/file.txt");
+        fileOutputStream.write(bytes, 0, bytes.length);
         fileOutputStream.close();
     }
 }

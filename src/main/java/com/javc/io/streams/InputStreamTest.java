@@ -3,18 +3,18 @@ package com.javc.io.streams;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class InputStreamTest {
 
     private final static StringBuilder stringBuilder = new StringBuilder();
 
-
     public static String readData() throws IOException {
         InputStream inputStream = new FileInputStream("src/main/java/com/javc/io/streams/file.txt");
         byte[] bytes = inputStream.readAllBytes();
         inputStream.close();
-        return new String(bytes);
+        return new String(bytes, StandardCharsets.UTF_16);//де кодировка(раскодировка) массива байт, при преобразовании в строку
     }
 
     public static String readDataWithScanner() throws IOException {
@@ -32,7 +32,7 @@ public class InputStreamTest {
     }
 
     public static void main(String[] args) throws IOException {
-        System.out.println(readData());
-        System.out.println(readDataWithScanner());
+        System.out.println(readData());//StandardCharsets.UTF_16
+        System.out.println(readDataWithScanner());//с де-кодировкой по умолчанию UTF-8
     }
 }

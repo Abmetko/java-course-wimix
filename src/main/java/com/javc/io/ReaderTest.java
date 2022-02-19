@@ -10,6 +10,7 @@ public class ReaderTest {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader("src/main/java/com/io/test.txt"));
             String lineWithText;
+            //bufferedReader.lines();
             while ((lineWithText = bufferedReader.readLine()) != null) {
                 System.out.println(lineWithText);
             }

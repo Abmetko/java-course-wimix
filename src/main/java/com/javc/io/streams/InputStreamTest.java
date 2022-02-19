@@ -1,9 +1,12 @@
 package com.javc.io.streams;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class InputStreamTest {
@@ -13,8 +16,12 @@ public class InputStreamTest {
     public static String readData() throws IOException {
         InputStream inputStream = new FileInputStream("src/main/java/com/javc/io/streams/file.txt");
         byte[] bytes = inputStream.readAllBytes();
+
+        Byte[] b = ArrayUtils.toObject(bytes);//1 byte may hold 1 character
+        System.out.println(Arrays.asList(b));//вывести на печать байты [72, 101, 108, 108, 111, 10, 119, 111, 114, 108, 100]
+
         inputStream.close();
-        return new String(bytes, StandardCharsets.UTF_16);//де кодировка(раскодировка) массива байт, при преобразовании в строку
+        return new String(bytes, StandardCharsets.US_ASCII);//де кодировка(раскодировка) массива байт, при преобразовании в строку
     }
 
     public static String readDataWithScanner() throws IOException {
@@ -32,7 +39,7 @@ public class InputStreamTest {
     }
 
     public static void main(String[] args) throws IOException {
-        System.out.println(readData());//StandardCharsets.UTF_16
+        System.out.println(readData());//StandardCharsets.US_ASCII
         System.out.println(readDataWithScanner());//с де-кодировкой по умолчанию UTF-8
     }
 }

@@ -1,5 +1,9 @@
 package com.javc.properties;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 import static com.javc.properties.PropertyProvider.*;
 
 public class PropertyTest {
@@ -14,5 +18,13 @@ public class PropertyTest {
         System.out.println(getProperty("hello"));
 
         System.out.println(getMap());
+
+        System.out.println("\nTest with multithreading & synchronization:\n");
+
+        IntStream threads = IntStream.rangeClosed(1,10);
+        List<Thread> threadList = threads.mapToObj(thread -> new Thread(() -> System.out.println(getProperty("jdbc.url"))))
+                .collect(Collectors.toList());
+
+        threadList.forEach(Thread::start);
     }
 }

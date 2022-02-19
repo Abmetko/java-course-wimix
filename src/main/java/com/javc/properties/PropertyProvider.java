@@ -30,6 +30,7 @@ public class PropertyProvider {
     }
 
     private static void loadProperty() {
+        System.out.println(Thread.currentThread().getName());//to ckeck without synchronization
         properties = new Properties();
         try {
             properties.load(PropertyProvider.class.getResourceAsStream(FILE_PATH));///Users/andrey/Desktop/java-course-wimix/target/classes/application.properties

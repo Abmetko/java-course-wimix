@@ -29,7 +29,7 @@ FileReader наследуется от InputStreamReader, он использу�
 public class OutputStreamTest {
 
     public static void main(String[] args) throws IOException {
-        byte[] bytes = "Hello\nworld".getBytes(StandardCharsets.US_ASCII); //закодировать поток байтов в строку согласно UTF-16
+        byte[] bytes = "Hello\nworld".getBytes(StandardCharsets.US_ASCII); //закодировать поток байтов в строку согласно US_ASCII
 
         FileOutputStream fileOutputStream = new FileOutputStream("src/main/java/com/javc/io/streams/file.txt");
         fileOutputStream.write(bytes, 0, bytes.length);

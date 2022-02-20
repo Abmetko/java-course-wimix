@@ -17,8 +17,8 @@ public class InputStreamTest {
         InputStream inputStream = new FileInputStream("src/main/java/com/javc/io/streams/file.txt");
         byte[] bytes = inputStream.readAllBytes();
 
-        Byte[] b = ArrayUtils.toObject(bytes);//1 byte may hold 1 character
-        System.out.println(Arrays.asList(b));//вывести на печать байты [72, 101, 108, 108, 111, 10, 119, 111, 114, 108, 100]
+        Byte[] bytesArray = ArrayUtils.toObject(bytes);//1 byte may hold 1 character
+        System.out.println(Arrays.asList(bytesArray));//вывести на печать байты [72, 101, 108, 108, 111, 10, 119, 111, 114, 108, 100]
 
         inputStream.close();
         return new String(bytes, StandardCharsets.US_ASCII);//де кодировка(раскодировка) массива байт, при преобразовании в строку

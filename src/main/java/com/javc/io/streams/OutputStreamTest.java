@@ -32,7 +32,8 @@ public class OutputStreamTest {
         byte[] bytes = "Hello\nworld".getBytes(StandardCharsets.US_ASCII); //закодировать поток байтов в строку согласно US_ASCII
 
         FileOutputStream fileOutputStream = new FileOutputStream("src/main/java/com/javc/io/streams/file.txt");
-        fileOutputStream.write(bytes, 0, bytes.length);
+//        fileOutputStream.write(bytes, 0, bytes.length);
+        fileOutputStream.write(bytes);
         fileOutputStream.close();
     }
 }

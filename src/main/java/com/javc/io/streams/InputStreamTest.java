@@ -2,9 +2,8 @@ package com.javc.io.streams;
 
 import org.apache.commons.lang3.ArrayUtils;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -15,21 +14,37 @@ public class InputStreamTest {
 
     private static byte[] getBytes() throws IOException {
         byte[] bytes;
-        FileInputStream intStream = new FileInputStream("src/main/java/com/javc/io/streams/file.txt");
+        FileInputStream intStream = new FileInputStream("src/main/java/com/javc/io/streams/file_2.txt");
         bytes = intStream.readAllBytes();
         intStream.close();
         return bytes;
     }
 
-    public static String readData() throws IOException {
-        InputStream inputStream = new FileInputStream("src/main/java/com/javc/io/streams/file.txt");
+    public static String readData(Charset charset) throws IOException {
+        InputStream inputStream = new FileInputStream("src/main/java/com/javc/io/streams/file_1.txt");
         byte[] bytes = inputStream.readAllBytes();
 
         Byte[] bytesArray = ArrayUtils.toObject(bytes);//1 byte may hold 1 character
-        System.out.println(Arrays.asList(bytesArray));//вывести на печать байты [72, 101, 108, 108, 111, 10, 119, 111, 114, 108, 100]
+        /*
+        вывести на печать байты [-2, -1, 0, 72, 0, 101, 0, 108, 0, 108, 0, 111] для кодировки UTF-16,
+        [72, 101, 108, 108, 111, 10, 119, 111, 114, 108, 100] для UTF-8.
+         */
+        System.out.println(Arrays.asList(bytesArray));
 
         inputStream.close();
-        return new String(bytes, StandardCharsets.US_ASCII);//де кодировка(раскодировка) массива байт, при преобразовании в строку
+        return new String(bytes, charset);//де кодировка(раскодировка) массива байт, при преобразовании в строку
+    }
+
+    public static String readData_2() throws IOException {
+        FileReader fileReader = new FileReader("src/main/java/com/javc/io/streams/file.txt");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+        StringBuilder stringBuilder = new StringBuilder();
+        bufferedReader.lines().forEach(line -> stringBuilder.append(line).append("\n"));
+        stringBuilder.setLength(stringBuilder.length() - 1);
+        bufferedReader.close();
+        fileReader.close();
+        return stringBuilder.toString();
     }
 
     public static String readDataWithScanner() throws IOException {
@@ -47,13 +62,23 @@ public class InputStreamTest {
     }
 
     public static void main(String[] args) throws IOException {
-        System.out.println(readData());//StandardCharsets.US_ASCII
-        System.out.println(readDataWithScanner());//с де-кодировкой по умолчанию UTF-8
+        OutputStreamTest.writeData_2(StandardCharsets.UTF_8);
+        System.out.println(readData(StandardCharsets.UTF_8));
+        System.out.println(readData(StandardCharsets.UTF_16));
+        System.out.println("\n");
 
-        System.out.println(Arrays.toString(getBytes())); //[-2, -1, 0, 72, 0, 101, 0, 108, 0, 108, 0, 111] для кодировки UTF-16
-        System.out.println(new String(getBytes()));
-        System.out.println(new String(getBytes(), StandardCharsets.US_ASCII));
-        System.out.println(new String(getBytes(), StandardCharsets.UTF_8));
-        System.out.println(new String(getBytes(), StandardCharsets.UTF_16));
+        OutputStreamTest.writeData_2(StandardCharsets.UTF_16);
+        System.out.println(readData(StandardCharsets.UTF_8));
+        System.out.println(readData(StandardCharsets.UTF_16));
+        System.out.println("\n");
+
+        System.out.println("new String(getBytes()): " + new String(getBytes()));
+        System.out.println("new String(getBytes(), StandardCharsets.US_ASCII): " + new String(getBytes(), StandardCharsets.US_ASCII));
+        System.out.println("new String(getBytes(), StandardCharsets.UTF_8): " + new String(getBytes(), StandardCharsets.UTF_8));
+        System.out.println("new String(getBytes(), StandardCharsets.UTF_16): " + new String(getBytes(), StandardCharsets.UTF_16));
+
+        System.out.println("\n");
+
+        System.out.println("readData_2(): " + readData_2());
     }
 }

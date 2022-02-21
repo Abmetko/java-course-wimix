@@ -3,6 +3,7 @@ package com.javc.io.streams;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 /*
@@ -29,29 +30,25 @@ FileReader наследуется от InputStreamReader, он использу�
  */
 public class OutputStreamTest {
 
-    //кодировка ASC-II, UTF-8
+    //записываем байты в файл
     public static void writeData_1() throws IOException {
-        byte[] bytes = {72, 101, 108, 108, 111};
+        byte[] bytes = {72, 101, 108, 108, 111, 10, 119, 111, 114, 108, 100};
 
-        OutputStream outputStream = new FileOutputStream("src/main/java/com/javc/io/streams/file_1.txt");
-        outputStream.write(bytes);
-        outputStream.close();
-    }
-
-    //кодировка UTF-16
-    public static void writeData_2() throws IOException {
-        byte[] bytes = "Hello".getBytes(StandardCharsets.UTF_16);
         OutputStream outputStream = new FileOutputStream("src/main/java/com/javc/io/streams/file_2.txt");
         outputStream.write(bytes);
         outputStream.close();
     }
 
-    public static void main(String[] args) throws IOException {
-        byte[] bytes = "Hello\nworld".getBytes(StandardCharsets.US_ASCII); //закодировать поток байтов в строку согласно US_ASCII
+    //в String каждому char присваивается byte значение и далее задаем кодировку
+    public static void writeData_2(Charset charset) throws IOException {
+        byte[] bytes = "Hello\nworld".getBytes(charset);
+        OutputStream outputStream = new FileOutputStream("src/main/java/com/javc/io/streams/file_1.txt");
+        outputStream.write(bytes);
+        outputStream.close();
+    }
 
-        FileOutputStream fileOutputStream = new FileOutputStream("src/main/java/com/javc/io/streams/file.txt");
-//        fileOutputStream.write(bytes, 0, bytes.length);
-        fileOutputStream.write(bytes);
-        fileOutputStream.close();
+    public static void main(String[] args) throws IOException {
+        writeData_1();
+        writeData_2(StandardCharsets.UTF_8);
     }
 }

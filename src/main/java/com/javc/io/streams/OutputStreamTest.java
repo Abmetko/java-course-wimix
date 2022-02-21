@@ -2,6 +2,7 @@ package com.javc.io.streams;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 
 /*
@@ -27,6 +28,23 @@ FileReader наследуется от InputStreamReader, он использу�
 поэтому после создания объекта InputStreamReader, если вы измените кодировку символов, это не будет иметь никакого эффекта.
  */
 public class OutputStreamTest {
+
+    //кодировка ASC-II, UTF-8
+    public static void writeData_1() throws IOException {
+        byte[] bytes = {72, 101, 108, 108, 111};
+
+        OutputStream outputStream = new FileOutputStream("src/main/java/com/javc/io/streams/file_1.txt");
+        outputStream.write(bytes);
+        outputStream.close();
+    }
+
+    //кодировка UTF-16
+    public static void writeData_2() throws IOException {
+        byte[] bytes = "Hello".getBytes(StandardCharsets.UTF_16);
+        OutputStream outputStream = new FileOutputStream("src/main/java/com/javc/io/streams/file_2.txt");
+        outputStream.write(bytes);
+        outputStream.close();
+    }
 
     public static void main(String[] args) throws IOException {
         byte[] bytes = "Hello\nworld".getBytes(StandardCharsets.US_ASCII); //закодировать поток байтов в строку согласно US_ASCII

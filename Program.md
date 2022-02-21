@@ -74,7 +74,7 @@
 
 * Рекурсия.
 
-* Работа с датой и временем: `Date`, `SimpleDateFormat`, `DateTimeFormatter`, `LocalDateTime`, `ZonedDateTime`.
+* Работа с датой и временем: `Date`, `SimpleDateFormat`, `DateTimeFormatter`, `LocalDate`, `LocalTime`, `LocalDateTime`, `ZonedDateTime`.
 
 * Многопоточность. Интерфейс `Runnable`. Класс `Thread`.
 
@@ -91,6 +91,8 @@
 * Жизненный цикл Maven.
 
 * pom.xml: `dependency`, `plugin`, `properties`.
+
+* Dependency scopes: `<scope>test</scope>`, `<scope>runtime</scope>` etc.
 
 * `groupId`.
 

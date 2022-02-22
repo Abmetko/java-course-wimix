@@ -32,6 +32,39 @@ public class Location {
     public String countryFlagEmojiUnicode;
     @JsonProperty("calling_code")
     public String callingCode;
+
+    public Integer getGeonameId() {
+        return geonameId;
+    }
+
+    public String getCapital() {
+        return capital;
+    }
+
+    public List<Language> getLanguages() {
+        return languages;
+    }
+
+    public String getCountryFlag() {
+        return countryFlag;
+    }
+
+    public String getCountryFlagEmoji() {
+        return countryFlagEmoji;
+    }
+
+    public String getCountryFlagEmojiUnicode() {
+        return countryFlagEmojiUnicode;
+    }
+
+    public String getCallingCode() {
+        return callingCode;
+    }
+
+    public Boolean getEu() {
+        return isEu;
+    }
+
     @JsonProperty("is_eu")
     public Boolean isEu;
 

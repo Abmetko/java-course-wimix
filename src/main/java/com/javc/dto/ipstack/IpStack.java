@@ -49,4 +49,55 @@ public class IpStack {
     @JsonProperty("location")
     public Location location;
 
+    public String getIp() {
+        return ip;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getContinentCode() {
+        return continentCode;
+    }
+
+    public String getContinentName() {
+        return continentName;
+    }
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public String getCountryName() {
+        return countryName;
+    }
+
+    public String getRegionCode() {
+        return regionCode;
+    }
+
+    public String getRegionName() {
+        return regionName;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
 }

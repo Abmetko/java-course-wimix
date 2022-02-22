@@ -19,4 +19,15 @@ public class Language {
     @JsonProperty("native")
     public String _native;
 
+    public String getCode() {
+        return code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String get_native() {
+        return _native;
+    }
 }

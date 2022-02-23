@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestInstance;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class BaseTest {
+public abstract class BaseTest {
 
     protected ClimateService climateService;
     protected IpStackService ipStackService;

@@ -6,7 +6,7 @@ import io.restassured.http.ContentType;
 import static com.javc.properties.PropertyProvider.getProperty;
 import static io.restassured.RestAssured.given;
 
-public class ClimateService {
+public class ClimateService extends BaseRestService {
 
     private final static String X_RAPID_API_KEY = getProperty("x.rapid.api.key");
     private final static String X_RAPID_API_HOST = getProperty("x.rapid.api.host");

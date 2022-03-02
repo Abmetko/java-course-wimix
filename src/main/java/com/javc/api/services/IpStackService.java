@@ -1,34 +1,30 @@
 package com.javc.api.services;
 
 import com.javc.dto.ipstack.IpStack;
-import io.restassured.RestAssured;
-import io.restassured.filter.log.RequestLoggingFilter;
-import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 
 import static com.javc.properties.PropertyProvider.getProperty;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItems;
 
-public class IpStackService {
+public class IpStackService extends BaseRestService {
 
-    //for request & response logging
-    static {
-        RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
+    private final RequestSpecification requestSpecification;
+
+    public IpStackService() {
+        requestSpecification = given()
+                .queryParam("access_key", getProperty("ipstack.com.access.key"));
+        requestSpecification.baseUri("http://api.ipstack.com/37.214.31.173");
     }
 
-    public static void main(String[] args) {
-        IpStackService ipStackService = new IpStackService();
-        System.out.println(ipStackService.getSpecificValue());
-    }
-
+    //example with request specification
     public IpStack getIpStack() {
         return given()
-                .queryParam("access_key", getProperty("ipstack.com.access.key"))
-                .when()//syntactic sugar, it returns the same RequestSpecification
-                .get("http://api.ipstack.com/37.214.31.173")
+                .spec(requestSpecification)
+                .get()
                 .then()
                 .assertThat()//syntactic sugar
                 .statusCode(200)//validate status code

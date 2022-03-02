@@ -7,7 +7,10 @@ public class IpStackTest extends BaseTest {
 
     @Test
     public void languageShouldBeEqualToBelarusian() {
-        String languageName = ipStackService.getIpStack().getLocation().getLanguages().get(0).getName();
+        String languageName = ipStackService.getIpStack()
+                .getLocation()
+                .getLanguages().get(0)
+                .getName();
         Assertions.assertThat(languageName).as("Unexpectedly, language is wrong.").isEqualTo("Belarusian");
     }
 }

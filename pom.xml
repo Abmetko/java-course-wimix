@@ -11,6 +11,7 @@
         <maven.compiler.source>14</maven.compiler.source>
         <maven.compiler.target>14</maven.compiler.target>
         <lombok>1.18.22</lombok>
+        <rest_assured>4.4.0</rest_assured>
     </properties>
 
     <dependencies>
@@ -73,12 +74,12 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>4.4.0</version>
+            <version>${rest_assured}</version>
         </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>json-path</artifactId>
-            <version>4.4.0</version>
+            <version>${rest_assured}</version>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>

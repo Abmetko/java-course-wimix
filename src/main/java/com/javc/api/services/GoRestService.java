@@ -13,11 +13,11 @@ import static com.javc.properties.PropertyProvider.getProperty;
 import static com.javc.secure_random.GenerateRandomEmail.generateRandomEmail;
 import static io.restassured.RestAssured.given;
 
-public class UserService extends BaseRestService {
+public class GoRestService extends BaseRestService {
 
     private final RequestSpecification requestSpecification;
 
-    public UserService() {
+    public GoRestService() {
         requestSpecification = given()
                 .contentType(ContentType.JSON)
                 .auth()
@@ -27,8 +27,8 @@ public class UserService extends BaseRestService {
     }
 
     public static void main(String[] args) {
-        UserService userService = new UserService();
-        userService.createUser_3();
+        GoRestService goRestService = new GoRestService();
+        goRestService.createUser_4();
     }
 
     //вариант с хардкодом в body
@@ -62,7 +62,22 @@ public class UserService extends BaseRestService {
     //вариант с формированием объекта body с помощью POJO
     @SneakyThrows
     public void createUser_3() {
-        User body = new ObjectMapper().readValue(UserService.class.getResourceAsStream("/user.json"), User.class);
+        User body = new ObjectMapper().readValue(GoRestService.class.getResourceAsStream("/user.json"), User.class);
+        body.setEmail(generateRandomEmail());//определяем только те поля, в которых есть необходимость в изменении в сравнении с json файлом
+
+        given()
+                .spec(requestSpecification)
+                .when()
+                .body(body)
+                .post()
+                .then()
+                .statusCode(201);
+    }
+
+    //вариант с формированием объекта body с помощью создания нового объекта
+    @SneakyThrows
+    public void createUser_4() {
+        User body = new User();
         body.setName("Andrey");
         body.setGender("male");
         body.setEmail(generateRandomEmail());

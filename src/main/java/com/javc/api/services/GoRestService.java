@@ -12,6 +12,7 @@ import java.util.Map;
 import static com.javc.properties.PropertyProvider.getProperty;
 import static com.javc.secure_random.GenerateRandomEmail.generateRandomEmail;
 import static io.restassured.RestAssured.given;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 public class GoRestService extends BaseRestService {
 
@@ -89,6 +90,7 @@ public class GoRestService extends BaseRestService {
                 .body(body)
                 .post()
                 .then()
-                .statusCode(201);
+                .statusCode(201)
+                .body(matchesJsonSchemaInClasspath("user_json_scheme.json"));//Json Schema validation
     }
 }

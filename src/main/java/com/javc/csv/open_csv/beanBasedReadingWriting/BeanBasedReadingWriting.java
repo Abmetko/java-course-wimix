@@ -13,7 +13,7 @@ public class BeanBasedReadingWriting {
 
     //каждая строка из CSV файла десериализуется в объект, где колонки сетаются в поля объекта
     public static <T> List<T> readValue(Reader reader, Class<T> cls, int skippedLines) {
-        List<T> list = new ArrayList<>();
+        List<T> list;
         ColumnPositionMappingStrategy<T> mappingStrategy = new ColumnPositionMappingStrategy<>();
         mappingStrategy.setType(cls);
 

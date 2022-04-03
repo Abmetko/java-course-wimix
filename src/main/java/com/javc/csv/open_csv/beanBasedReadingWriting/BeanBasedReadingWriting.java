@@ -6,18 +6,17 @@ import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BeanBasedReadingWriting {
 
     //каждая строка из CSV файла десериализуется в объект, где колонки сетаются в поля объекта
-    public static <T> List<T> readValue(Reader reader, Class<T> cls, int skippedLines) {
-        List<T> list;
-        ColumnPositionMappingStrategy<T> mappingStrategy = new ColumnPositionMappingStrategy<>();
+    public static <OBJECT> List<OBJECT> readValue(Reader reader, Class<OBJECT> cls, int skippedLines) {
+        List<OBJECT> list;
+        ColumnPositionMappingStrategy<OBJECT> mappingStrategy = new ColumnPositionMappingStrategy<>();
         mappingStrategy.setType(cls);
 
-        CsvToBean<T> cb = new CsvToBeanBuilder<T>(reader)
+        CsvToBean<OBJECT> cb = new CsvToBeanBuilder<OBJECT>(reader)
                 .withIgnoreQuotations(true)
                 .withIgnoreEmptyLine(true)
                 .withMappingStrategy(mappingStrategy)
@@ -33,8 +32,8 @@ public class BeanBasedReadingWriting {
         return list;
     }
 
-    public static <T> void writeValue(Writer writer, List<T> list) {
-        StatefulBeanToCsv<T> sbc = new StatefulBeanToCsvBuilder<T>(writer)
+    public static <OBJECT> void writeValue(Writer writer, List<OBJECT> list) {
+        StatefulBeanToCsv<OBJECT> sbc = new StatefulBeanToCsvBuilder<OBJECT>(writer)
                 .withApplyQuotesToAll(false)
                 .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
                 .build();

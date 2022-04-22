@@ -20,6 +20,6 @@ public class JsonAnySetter_JsonAnyGetter_Test {
         ObjectMapper objectMapper = new ObjectMapper();
         Dog dog = objectMapper.readValue(new File("src/main/java/com/javc/serialization/jacksonAnnotation/jsonAnyGetter_jsonAnySetter/dog.json"), Dog.class);
         System.out.println(dog.getAge());
-//        System.out.println(dog.getAdditionalProperties().get("additional_field"));
+        System.out.println(dog.getUnknown().get("additional_field"));
     }
 }

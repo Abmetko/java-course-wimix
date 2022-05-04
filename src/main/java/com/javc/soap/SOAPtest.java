@@ -1,4 +1,4 @@
-package com.wimix.automation.zegoal.ui;
+package com.javc.soap;
 
 import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;

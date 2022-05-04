@@ -1,8 +1,12 @@
 package com.javc.io;
 
+import lombok.SneakyThrows;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class ReaderTest {
 
@@ -17,6 +21,11 @@ public class ReaderTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @SneakyThrows
+    public static String readFileAsString(String file) {
+        return new String(Files.readAllBytes(Paths.get(file)));
     }
 
     public static void main(String[] args) {

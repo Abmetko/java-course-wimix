@@ -31,9 +31,10 @@ public class ThreadLocalTest {
         MyThread thread2 = new MyThread();
         thread1.start();
         thread2.start();
-        thread1.join();
+        thread1.join();//ждать смерти этого порожденного потока
         thread2.join();
 
+        //после того как два порожденных потока умрут - выполнится метод main потока
         System.out.println(threadLocal.get().getName());
     }
 }

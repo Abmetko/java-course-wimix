@@ -5,10 +5,6 @@ import java.util.stream.Stream;
 
 public class MapToInt {
 
-    public static void main(String[] args) {
-
-    }
-
     private void transformStreamToIntStream() {
         Stream<Integer> stream = Stream.of(1, 2, 3, 4, 5);
 

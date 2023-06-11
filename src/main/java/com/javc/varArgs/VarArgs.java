@@ -11,8 +11,10 @@ public class VarArgs {
         System.out.print("\n");
     }
 
+    @SuppressWarnings("RedundantArrayCreation")
     public static void main(String[] args) {
         varArgsTest("1", "2", "3");
         varArgsTest("100");
+        varArgsTest(new String[]{"a","b"});
     }
 }

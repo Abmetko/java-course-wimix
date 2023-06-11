@@ -1,13 +1,15 @@
 package com.javc.arrays;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class BubbleSorting {
 
     static int[] array = {1, 5, -9, 0, -12, 4, 6, 34};
 
     public static void main(String[] args) {
-        getMaxValueInArray();
+//        createNewArrayWithEvenNumbersByMeansOfStream();
+        bubbleSorting();
     }
 
     public static void bubbleSorting() {
@@ -25,7 +27,6 @@ public class BubbleSorting {
                 }
             }
         }
-
         System.out.println(Arrays.toString(array));
     }
 
@@ -54,13 +55,19 @@ public class BubbleSorting {
         System.out.println(Arrays.toString(newArray));
     }
 
-    //foreach
-    public static void getMaxValueInArray() {
-        int[] arr = new int[10];
+    public static void createNewArrayWithEvenNumbersByMeansOfStream() {
+        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] newArray = IntStream.of(array).filter(i -> i % 2 == 0).toArray();
 
-        for (int i : arr) {
-            System.out.println(i);
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i : newArray) {
+            sb.append(i);
+            if(i != Arrays.stream(newArray).max().getAsInt()){
+                sb.append(",");
+            }
         }
+        sb.append("]");
+        System.out.println(sb);
     }
-
 }

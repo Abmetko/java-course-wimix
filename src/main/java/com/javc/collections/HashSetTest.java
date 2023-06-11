@@ -8,7 +8,7 @@ public class HashSetTest {
     public static void main(String[] args) {
         Set<Integer> set = new HashSet<>();
 
-        //добавляем элемент во мноджество
+        //добавляем элемент во множество
         set.add(1);
         set.add(2);
         set.add(3);

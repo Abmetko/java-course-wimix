@@ -49,6 +49,8 @@ public class SharedMapWithUserContext implements Runnable {
 }
 
 class Context {
+
+    @SuppressWarnings("FieldCanBeLocal")
     private final String userName;
 
     public Context(String userName) {

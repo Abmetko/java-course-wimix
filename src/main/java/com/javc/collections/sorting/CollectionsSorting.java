@@ -43,10 +43,10 @@ public class CollectionsSorting {
     }
 
     public static void main(String[] args) {
-//        sortingOfCollection();
-//        sortingOfCollectionWithCustomObjects();
-//        sortingOfCollectionWhichCannotImplementComparable();
-//        sortingOfArrayWithCollection();
+        sortingOfCollection();
+        sortingOfCollectionWithCustomObjects();
+        sortingOfCollectionWhichCannotImplementComparable();
+        sortingOfArrayWithCollection();
         System.out.println(new Human(10));
     }
 }
@@ -61,7 +61,7 @@ class Human implements Comparable<Human> {
 
     @Override
     public int compareTo(Human o) {
-        return this.age - o.age;//o.age - this.age (for reversed order)
+        return this.age - o.age; //o.age - this.age (if we need to have reversed order)
     }
 
     @Override
@@ -72,7 +72,7 @@ class Human implements Comparable<Human> {
     }
 }
 
-/*
+/**
 В случае, если нет возможности для класса наших объектов имплементировать интерфейс
 Comparable (например сторонняя библиотека)
 */

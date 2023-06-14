@@ -17,7 +17,7 @@ public class MyThread extends Thread {
         thread2.run();
 
         //Третий вариант, на основе класса Thread, передав в конструктор реализацию интерфейса Runnable.
-        Thread thread3 = new Thread(() -> System.out.println(currentThread().getName()));
+        Thread thread3 = new Thread(() -> System.out.println(currentThread().getName()), "My new thread");
         thread3.start();
     }
 }

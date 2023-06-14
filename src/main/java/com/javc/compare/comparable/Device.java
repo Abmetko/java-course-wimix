@@ -1,7 +1,6 @@
 package com.javc.compare.comparable;
 
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Device implements Comparable<Device> {
 
@@ -53,6 +52,19 @@ public class Device implements Comparable<Device> {
         set.add(device5);
 
         for (Device d : set) {
+            System.out.println(d.toString());
+        }
+
+        List<Device> list = new ArrayList<>();
+        list.add(device1);
+        list.add(device2);
+        list.add(device3);
+        list.add(device4);
+        list.add(device5);
+
+        list.sort(Collections.reverseOrder());
+
+        for (Device d : list) {
             System.out.println(d.toString());
         }
     }

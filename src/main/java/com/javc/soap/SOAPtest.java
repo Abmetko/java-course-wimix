@@ -16,14 +16,14 @@ public class SOAPtest {
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
     }
 
-    public static void sendSoapRequest(File file) {
+    public static void sendSoapRequest(Object body) {
         Response response = RestAssured
                 .given()
                 .baseUri("http://www.dneonline.com")
                 .basePath("/calculator.asmx")
                 .header("SOAPAction", "http://tempuri.org/Add")
                 .header("Content-Type", "text/xml; charset=utf-8")
-                .body(file)
+                .body(body)
                 .post();
         response.then().statusCode(200);
         response.prettyPrint();

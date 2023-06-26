@@ -1,8 +1,5 @@
 package com.javc.leetcode;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /*
@@ -34,20 +31,35 @@ Explanation: n = 9 since there are 9 numbers, so all numbers are in the range [0
 public class MissingNumber {
 
     public static int missingNumber(int[] nums) {
-        int max = Arrays.stream(nums).max().getAsInt();
-        int min = Arrays.stream(nums).min().getAsInt();
-
-        for (Integer i:IntStream.rangeClosed(min, max).boxed().collect(Collectors.toList())){
-            List<Integer> actualList = Arrays.stream(nums).boxed().collect(Collectors.toList());
-            if(!actualList.contains(i)){
-                return i;
+        int min = nums[0];
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i + 1] < min) {
+                min = nums[i + 1];
             }
         }
-        return -1;
+        int[] fullArray = new int[nums.length + 1];//////////
+
+        fullArray[0] = min;
+
+        for (int i = 1; i < nums.length + 1; i++) {
+            fullArray[i] = fullArray[i - 1] + 1;
+        }
+        return IntStream.of(fullArray).sum() - IntStream.of(nums).sum();
+    }
+
+    public static int missingNumber2(int[] nums) {
+        int n = nums.length;
+        int expectedSum = (n * (n + 1)) / 2;
+        int actualSum = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            actualSum = actualSum + nums[i];
+        }
+
+        return expectedSum - actualSum;
     }
 
     public static void main(String[] args) {
-        System.out.println(missingNumber(new int[]{9,6,4,2,3,5,7,0,1}));
+        System.out.println(missingNumber(new int[]{3, 0, 1}));
     }
-
 }

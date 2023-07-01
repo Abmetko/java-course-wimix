@@ -51,7 +51,7 @@ public class BeanBasedReadingWriting {
     }
 
     public static void main(String[] args) throws Exception {
-        Reader reader = new FileReader("src/main/resources/temperatures.CSV");
+        Reader reader = new FileReader("src/main/resources/Users.CSV");
         List<Temperature> list = readValue(reader, Temperature.class, 1);
 
         Writer writer = new FileWriter("src/main/java/com/javc/csv/open_csv/beanBasedReadingWriting/written_csv.CSV");

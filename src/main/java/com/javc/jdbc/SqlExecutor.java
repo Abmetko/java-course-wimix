@@ -1,6 +1,6 @@
 package com.javc.jdbc;
 
-import com.javc.jdbc.dto.Day;
+import com.javc.jdbc.dto.User;
 import lombok.SneakyThrows;
 
 import java.sql.ResultSet;
@@ -17,25 +17,29 @@ public class SqlExecutor {
     }
 
     @SneakyThrows
-    public void createTable() {
-        statement.execute("CREATE TABLE Temperature (" +
-                "average DOUBLE PRECISION, " +
-                "average_max DOUBLE PRECISION, " +
-                "average_min DOUBLE PRECISION, " +
-                "record_max DOUBLE PRECISION, " +
-                "record_min DOUBLE PRECISION)");
+    public void executeSqlQuery(String queryLine) {
+        statement.executeQuery(queryLine);
     }
 
-    public void insertDataIntoTable(List<Day> days) {
-        days.forEach(day -> {
+    @SneakyThrows
+    public void createTable() {
+        statement.execute("CREATE TABLE Customer1 (" +
+                "id int, " +
+                "name varchar(255), " +
+                "last_name varchar(255), " +
+                "age int" +
+                ")");
+    }
+
+    public void insertDataIntoTable(List<User> users) {
+        users.forEach(user -> {
             try {
-                statement.execute("INSERT INTO Temperature (average, average_max, average_min, record_max, record_min) " +
+                statement.execute("INSERT INTO Customer1 (id, name, last_name, age) " +
                         "VALUES (" +
-                        day.temp.average + ", " +
-                        day.temp.averageMax + ", " +
-                        day.temp.averageMin + ", " +
-                        day.temp.recordMax + ", " +
-                        day.temp.recordMin +
+                        user.id + ", " +
+                        "'" + user.name + "', " +
+                        "'" + user.lastName + "', " +
+                        user.age +
                         ");");
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -45,30 +49,28 @@ public class SqlExecutor {
 
     @SneakyThrows
     public ResultSet getResultSet() {
-        return statement.executeQuery("SELECT * FROM Temperature");
+        return statement.executeQuery("SELECT * FROM Customer1");
     }
 
     @SneakyThrows
     public void clearTable() {
-        statement.execute("TRUNCATE TABLE Temperature");
+        statement.execute("TRUNCATE TABLE Customer1");
     }
 
     @SneakyThrows
     public void dropTable() {
-        statement.execute("DROP TABLE Temperature");
+        statement.execute("DROP TABLE Customer1");
     }
 
-    //for homework
     public void insertDataIntoTable2(List<String[]> lines) {
         lines.forEach(line -> {
             try {
-                statement.execute("INSERT INTO Temperature (average, average_max, average_min, record_max, record_min) " +
+                statement.execute("INSERT INTO Customer1 (id, name, last_name, age) " +
                         "VALUES (" +
                         line[0] + ", " +
-                        line[1] + ", " +
-                        line[2] + ", " +
-                        line[3] + ", " +
-                        line[4] +
+                        "'" + line[1] + "', " +
+                        "'" + line[2] + "', " +
+                        line[3] +
                         ");");
             } catch (SQLException e) {
                 e.printStackTrace();

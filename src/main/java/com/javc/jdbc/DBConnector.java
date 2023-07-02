@@ -1,6 +1,7 @@
 package com.javc.jdbc;
 
 import lombok.SneakyThrows;
+import lombok.Synchronized;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -33,6 +34,7 @@ public class DBConnector {
      * In this example, the JVM will attempt to load the driver as part of its initialization. Once done, the ImageViewer is started.
      */
     @SneakyThrows
+    @Synchronized
     public static Connection getConnection() {
         if (connection == null) {
             Class.forName("org.postgresql.Driver");
@@ -46,6 +48,7 @@ public class DBConnector {
     }
 
     @SneakyThrows
+    @Synchronized
     public static Statement getStatement() {
         if (statement == null) {
             statement = getConnection().createStatement();

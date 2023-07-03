@@ -8,9 +8,9 @@ public class TestStrategy {
 
     public static void makeSignUp(Integer strategy) {
         if (strategy.equals(1)) {
-            new SignUpScreen(new AdminStrategy()).signUp();
+            new SignUpScreen(new AdminSignUpStrategy()).signUp();
         } else if (strategy.equals(2)) {
-            new SignUpScreen(new UserStrategy()).signUp();
+            new SignUpScreen(new UserSignUpStrategy()).signUp();
         }
     }
 

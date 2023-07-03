@@ -1,6 +1,6 @@
 package com.javc.patterns.strategy;
 
-public class AdminStrategy implements Strategy {
+public class AdminSignUpStrategy implements SignUpStrategy {
 
     @Override
     public void signUp() {

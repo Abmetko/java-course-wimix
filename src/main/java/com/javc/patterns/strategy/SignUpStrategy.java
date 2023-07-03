@@ -1,6 +1,6 @@
 package com.javc.patterns.strategy;
 
-public interface Strategy {
+public interface SignUpStrategy {
 
     void signUp();
 }

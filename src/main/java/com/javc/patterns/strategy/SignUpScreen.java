@@ -2,9 +2,9 @@ package com.javc.patterns.strategy;
 
 public class SignUpScreen {
 
-    private final Strategy signUpStrategy;
+    private final SignUpStrategy signUpStrategy;
 
-    public SignUpScreen(Strategy signUpStrategy) {
+    public SignUpScreen(SignUpStrategy signUpStrategy) {
         this.signUpStrategy = signUpStrategy;
     }
 

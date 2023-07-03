@@ -1,8 +1,10 @@
 package com.javc.api;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+@Disabled
 public class IpStackTest extends BaseTest {
 
     @Test

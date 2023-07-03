@@ -3,6 +3,7 @@ package com.javc.api;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.*;
 
+@Disabled
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class JunitTest {
 

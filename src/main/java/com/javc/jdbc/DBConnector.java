@@ -37,7 +37,7 @@ public class DBConnector {
     @Synchronized
     public static Connection getConnection() {
         if (connection == null) {
-            Class.forName("org.postgresql.Driver");
+//            Class.forName("org.postgresql.Driver"); There is no need to add this
             String url = getProperty("jdbc.url");
             Properties props = new Properties();
             props.setProperty("user", getProperty("jdbc.user"));

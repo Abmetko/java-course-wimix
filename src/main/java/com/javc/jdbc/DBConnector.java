@@ -4,11 +4,7 @@ import lombok.SneakyThrows;
 import lombok.Synchronized;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.Statement;
-import java.util.Properties;
-
-import static com.javc.properties.PropertyProvider.getProperty;
 
 public class DBConnector {
 
@@ -38,11 +34,11 @@ public class DBConnector {
     public static Connection getConnection() {
         if (connection == null) {
 //            Class.forName("org.postgresql.Driver"); There is no need to add this
-            String url = getProperty("jdbc.url");
-            Properties props = new Properties();
-            props.setProperty("user", getProperty("jdbc.user"));
-            props.setProperty("password", getProperty("jdbc.password"));
-            connection = DriverManager.getConnection(url, props);
+//            String url = getProperty("jdbc.url");
+//            Properties props = new Properties();
+//            props.setProperty("user", getProperty("jdbc.user"));
+//            props.setProperty("password", getProperty("jdbc.password"));
+//            connection = DriverManager.getConnection(url, props);
         }
         return connection;
     }
